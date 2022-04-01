@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>summary of ps command</title>
+  </head>
+  <body>
+    <h1>Summary of <code>ps</code> command</h1>
+    <p>
+      <code>ps</code> command shows information about the processes being run
+      on the system.  It is a standard utility in POSIX, and most Linux
+      distributions use <code>ps</code> implementation of <code>procps</code>
+      package.  A user can give command-line options to <code>ps</code>
+      command to specify:
+    </p>
+    <ul>
+      <li>processes to display</li>
+      <li>display format</li>
+    </ul>
+    <h2>Default behavior</h2>
+    <ul>
+      <li>
+        select processes that have the same EUID as the current user and
+        associated with the same terminal as the invoker.
+      </li>
+      <li>
+        display the following information:
+        <ul>
+          <li>process ID</li>
+          <li>terminal associated with the process</li>
+          <li>cumulated CPU time</li>
+          <li>executable name</li>
+        </ul>
+      </li>
+    </ul>
+  </body>
+</html>
