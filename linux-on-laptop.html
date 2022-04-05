@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Notes for Linux on Laptops</title>
+  </head>
+  <body>
+    <h1>Notes for Linux on Laptops</h1>
+
+    <h2>Laptop lid behavior</h2>
+    <p>
+    In Ubuntu 20.04, modify <code>/etc/systemd/logind.conf</code> to change
+    laptop lid close behavior.
+    </p>
+
+    <h2>Keyboard Fn keys</h2>
+    <p>
+    Use <code>evtest</code> or read logs from <code>dmesg</code> to determine
+    scancodes.  Write <code>hwdb</code> file to remap scancodes to appropriate
+    keycodes.
+    </p>
+    <h3>Example <code>hwdb</code> files</h3>
+    <ul>
+      <li>
+        <a href="static/90-galaxy-book-keyfix.hwdb">
+          Galaxy Book NT750XDZ-AM58S
+        </a>
+      </li>
+    </ul>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+# hwdb file for fixing function keys of Galaxy Book NT750XDZ-AM58S
+# Put this file in "/etc/udev/hwdb.d/" and execute "sudo systemd-hwdb update"
+# (Tested on Ubuntu 20.04)
+#
+# Brightness Down (Fn-F2) and Brightness Up (Fn-F3) are not keyboard keys.
+# The inputs from these keys come from a device named "Video Bus".
+#
+# Switch Display (Fn-F4) returns scancodes db and 19 simultaneously, which are
+# mapped to KEY_LEFTMETA and KEY_P respectively (i.e., Win+P).  Although this
+# behavior is correct in practice, this makes it impossible to remap this
+# function key, as doing it will affect KEY_LEFTMETA and KEY_P
+#
+# Touchpad Toggle (Fn-F5) returns scancodes 1d, db, and 76 simultaneously.
+# 1d is for KEY_LEFTCTRL, db for KEY_LEFTMETA, and 76 for KEY_ZENKAKUHANKAKU.
+# Again, it is impossible to modify keycode mappings for 1d and db, but
+# non-Japanese versions of Galaxy Books do not have Zenkaku/Hankaku in their
+# keyboards, so it is safe to alter mapping from scancode 76.
+#
+# Fn Lock (Fn-F12) works properly and returns scancode a8 when fn lock is
+# turned on, and a9 when fn lock is turned off.  These scancodes are unmapped
+# and do nothing in the default installation of Ubuntu 20.04.
+#
+# Turn On/Off Display (Fn-F9) works well, but does not return any scancodes.
+#
+# Open S Service (Fn-ESC) and Change Performance Mode (Fn-F11) do not seem to
+# work, and they also do not return any scancodes.
+#
+#
+# KEYBOARD_KEY_ce = Open Settings (Fn-F1)
+# KEYBOARD_KEY_76 = Touchpad Toggle (Fn-F5)
+# KEYBOARD_KEY_ae = Volume Down (Fn-F7)
+# KEYBOARD_KEY_b0 = Volume Up (Fn-F8)
+# KEYBOARD_KEY_9f = Blocking Recording Mode (Fn-F10)
+# KEYBOARD_KEY_a8 = Fn Lock On (Fn-F12)
+# KEYBOARD_KEY_a9 = Fn Lock Off (Fn-F12)
+# 
+# Here, f24 is used to make keys do nothing when pressed, and f21 maps to
+# Touchpad Toggle.  This might seem strange at first, but it works because
+# Linux keycodes are eight less than Xorg keycodes.  For example, f24 in Linux
+# keycodes is 194, plus eight to that is 202 which is the corresponding Xorg
+# keycode.  On Ubuntu 20.04, "xmodmap -pke" will show that keycode 202 has no
+# meaning.
+#
+# For further information:
+#     linux-headers/include/uapi/linux/input-event-codes.h  (Linux keycodes)
+#     xmodmap -pke  (Command that prints current meanings of Xorg keycodes)
+#     https://wiki.archlinux.org/title/Keyboard_input
+#
+evdev:atkbd:dmi:bvn*:bvr*:bd*:svn*:pn*:pvr*
+ KEYBOARD_KEY_ce=!f24
+ KEYBOARD_KEY_76=f21
+ KEYBOARD_KEY_ae=!volumedown
+ KEYBOARD_KEY_b0=!volumeup
+ KEYBOARD_KEY_9f=f24
+ KEYBOARD_KEY_a8=!f24
+ KEYBOARD_KEY_a9=!f24
