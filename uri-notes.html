@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Notes on Uniform Resource Identifiers</title>
+  </head>
+  <body>
+    <h1>Notes on Uniform Resource Identifiers</h1>
+    <p>
+    The ultimate reference (maybe?):
+    <a href="https://datatracker.ietf.org/doc/html/rfc3986">
+    https://datatracker.ietf.org/doc/html/rfc3986</a>
+    </p>
+
+    <p>
+    RFC 3986 gives some advices on several pitfalls:
+    </p>
+    <ol>
+      <li>
+        A 'resource' pointed by a URI does not necessarily have to be an
+        electronic document of some kind; it can literally be anything.
+        (e.g., human beings, corporations, books, math equations, etc.)
+      </li>
+      <li>
+        An identifier does not necessarily define or embody the
+        resource by itself (but it could; e.g., query strings)
+      </li>
+      <li>
+        The system that uses the identifier does not necessarily access the
+        resource pointed by that identifier.
+      </li>
+      <li>
+        An identifier may be pointing to multiple resources (e.g., DNS-based
+        load balancing), and the resource it points to might change (e.g., DNS
+        registry changes).
+      </li>
+    </ol>
+  </body>
+</html>
